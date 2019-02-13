@@ -1,0 +1,17 @@
+#cut up videos
+fmpeg -ss 30 -i input.wmv -c copy -t 10 output.mp4
+
+#adjust size (aspect radio)
+ffmpeg -i input.avi  -s 1024x768 output.avi
+
+#The scale filter adjusts the aspect ratio, so that the display ratio remains the same. Assuming you don't want that.
+ffmpeg -i 1.mp4 -vf crop=320:240:0:40,scale=320:240,setsar=1 -c:a copy output.mp4
+
+#add titles
+ffmpeg -i yuhan_clip.MTS -vf drawtext="fontfile=GothamBold.ttf:fontsize=30:fontcolor=white:x=30:y=40:text=‘happiness’” anger.MTS
+
+#create the list and concat the clips together
+ffmpeg -f concat -i mylist.txt -c copy output.MTS
+ffmpeg -f concat -safe 0 -i /path/to/text.txt -i /path/to/audio.mp3 -vsync vfr -pix_fmt yuv420p /path/to/output.mp4
+
+ffmpeg -i “concat:video1.avi|video2.avi” output_video.avi
