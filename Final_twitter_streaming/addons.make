@@ -1,0 +1,9 @@
+ofxBox2d
+ofxCv
+ofxFaceTracker
+ofxGeo
+ofxGui
+ofxOpenCv
+ofxOsc
+ofxPoco
+ofxSvg
